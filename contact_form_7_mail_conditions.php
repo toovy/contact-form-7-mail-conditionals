@@ -64,8 +64,7 @@ class Contact_Form_7_Mail_Conditions {
 			$expression = $matches[WPCF7MC_EXPRESSION][$i];
 			$variable = $matches[WPCF7MC_VARIABLE][$i];
 			$value = $matches[WPCF7MC_VALUE][$i];
-			$variable_value = $cf7->posted_data[$variable];
-			if (empty($variable_value)) {
+			if (empty($cf7->posted_data[$variable]) and array_key_exists($variable, $cf7->posted_data)) {
 				$updated_email_body = str_replace($expression, '', $updated_email_body);
 			} else {
 				$updated_email_body = str_replace($expression, $value, $updated_email_body);
